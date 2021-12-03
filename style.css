@@ -1,0 +1,109 @@
+body {
+  background-image: url("clouds.jpg"); 
+  background-color: #cccccc; 
+background-size: cover;
+  background-repeat: repeat; 
+} 
+
+#map {
+  height: 450px; width: auto;
+  text-align: center; 
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 39px;
+}
+.container{
+  margin-bottom: 30px;
+}
+#current-pollution-info{
+  display: none;
+}
+
+.divider {
+    height: 20px;
+    position: relative;
+    width: 100%;
+    background: radial-gradient(ellipse farthest-side at top center, rgba(0,0,0,0.3), transparent);
+  }
+.divider:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(left, transparent, rgba(0,0,0,0.2), rgba(0,0,0,0.1), transparent);
+  }
+
+  .bg-image {
+    background-image: url("bg.jpg"); /* The image used */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 500px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    border-radius: 39px;
+  }
+  .head-title{
+    color: #ffffff;
+    font-weight:bolder;
+    text-shadow: rgba(189, 189, 188, 0.534) 1px 0 10px;
+    
+}
+
+  .head-text{
+      color: #ffffff;
+      font-weight: 400;
+  }
+
+   #city, #country{
+       font-size: 30px;
+       font-weight: 400;
+   }
+
+   .elm1{
+    font-size: 20px;
+    color: rgb(73, 72, 72);
+   }
+
+   #temp, #humidity, #pressure, #wind, #visib{
+        font-size: 30px;
+        font-weight: bold;
+   }
+   #w-icon{
+       width: 70px;
+   }
+
+   .result-box{
+       border: 1px solid rgb(92, 92, 92);
+       border-radius: 39px;
+       padding-left: 20px;
+       padding-right: 20px;
+       margin-top: 30px;
+       box-shadow: 6px 4px 20px rgba(179, 179, 179, 0.733);
+       background-color: rgba(255, 255, 255, 0.486);
+   }
+
+   /* .result-box2{
+    border: 1px solid rgb(158, 158, 158);
+    border-radius: 20px;
+    padding-top: 20px;
+} */
+
+.card{
+  margin: 10px;
+  background-color: transparent;
+}
+
+#myChart{
+  width: auto;
+  height: 500px;
+}
+
+#p-result{
+  display: none;
+}
+
+  

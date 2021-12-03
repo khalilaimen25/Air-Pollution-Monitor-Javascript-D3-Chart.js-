@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+    <title>Air pollution monitor</title>
+</head>
+
+<body>
+    
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom ">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+            <span class="fs-4">Air pollution monitor</span>
+          </a>
+    
+          <ul class="nav nav-pills">
+            <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          </ul>
+        </header>
+      </div>
+  
+    <main>
+        <section class="py-5 text-center container bg-image">
+            <div class="row py-lg-5">
+              <div class="col-lg-8 col-md-8 mx-auto">
+                <h1 class="head-title ">Air pollution monitor</h1>
+                <p class="lead head-text"> Air Pollution Monitor provides current, forecast and historical air pollution plus weather data for any coordinates on the globe
+                    <br>Besides basic Air Quality Index, the Monitor returns data about polluting gases, such as Carbon monoxide (CO), Nitrogen dioxide (NO2), Ozone (O3), Sulphur dioxide (SO2), Ammonia (NH3), and particulates (PM2.5 and PM10). </p>
+                <div>
+                  <a href="#1" class="btn btn-primary btn-lg">Current Data</a>
+                  <a href="#2" class="btn btn-secondary btn-lg">Periodic Data</a>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- MAP SECTION -->
+         <div class="container text-center">
+             <h4 id="date_time" class="fw-light"></h4>
+             <h1 id="1">Choose location from the map</h1>
+             <div id="map"></div>
+         </div>
+          
+        <div class="container">
+            <div class="text-center">
+                <p>Press button to get current weather and pollution information of this location</p>  
+                <button id="btn-current" type="button" class="btn btn-outline-primary btn-lg">Get Current info</button><br>
+            </div>
+              <div id="current-pollution-info" class="result-box">
+                    <p id="c-result" class="text-center"><span id="city"></span>, <span id="country" > </span></p>
+                    <div class="row text-center result-box2">
+                        <div class="col card">
+                            <p class="elm1 fw-bold card-title">Temperature</p>
+                            <span><span id="temp"></span><span><img id="w-icon" src=""></span></span>
+                            <p id="w-main"></p>
+                        </div>
+                        <div class="col card">
+                            <p class="elm1 fw-bold">Humidity</p>
+                            <span id="humidity"></span>
+                        </div>
+                        <div class="col card">
+                            <p class="elm1 fw-bold">Pressure</p>
+                            <span id="pressure"></span>
+                        </div>
+                        <div class="col card">
+                            <p class="elm1 fw-bold">Wind speed</p>
+                            <span id="wind"></span>
+                        </div>
+                        <div class="col card">
+                            <p class="elm1 fw-bold">Visibility</p>
+                            <span id="visib"></span>
+                        </div>
+                    </div>
+                    <h4 style="margin-top: 30px;" class="text-center">Pollutant Results</h4>
+                    <table class="table table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th>Pollutant</th>
+                                <th>Pollutant fullname</th>
+                                <th>Pollutant concentration in μg/m3</th>
+                                <th>Qualitative name</th>
+                            </tr>
+                        </thead>
+                        <tbody id="current-pollution-tbody">
+                            <tr>
+                                <th scope="row">CO</th>
+                                <td>Carbon Monoxide</td>
+                                <td id="c-co"></td>
+                                <td id="c-co-qname"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">NO2</th>
+                                <td>Nitrogen dioxide</td>
+                                <td id="c-no2"></td>
+                                <td id="c-no2-qname"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">O3</th>
+                                <td>Ozone</td>
+                                <td id="c-o3"></td>
+                                <td id="c-o3-qname"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">SO2</th>
+                                <td>Sulphur dioxide</td>
+                                <td id="c-so2"></td>
+                                <td id="c-so2-qname"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">NH3</th>
+                                <td>Ammonia</td>
+                                <td id="c-nh3"></td>
+                                <td id="c-nh3-qname"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">PM2.5</th>
+                                <td>particulates PM2.5</td>
+                                <td id="c-pm2_5"></td>
+                                <td id="c-pm2_5-qname"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">PM10</th>
+                                <td>particulates PM10</td>
+                                <td id="c-pm10"></td>
+                                <td id="c-pm10-qname"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+              </div>
+        </div>
+
+        <div class="divider"></div><br>
+
+        <div class="container">
+            <div class="row">
+                <h3 id="2" class="text-center">Choose the period in which you want to see pollution statistics</h3>
+                <div class="col-md-4 offset-2">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Start Date</span>
+                        <input type="date" id="start" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">End Date</span>
+                        <input type="date" id="end" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button id="btn-period" type="button" class="btn btn-outline-primary btn-lg">Get Periodic info</button>
+            </div>
+        </div>
+
+        <div class="container" id="p-result">
+            <div id="chart-placeholder">
+                <canvas id="myChart" ></canvas>
+            </div>
+            <br>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>AQI Category (Range)</th>
+                        <th>CO (8hr)</th>
+                        <th>SO2 (24hr)</th>
+                        <th>O3 (8hr)</th>
+                        <th>NO2 (24hr)</th>
+                        <th>NH3 (24hr)</th>
+                        <th>PM10 (24hr)</th>
+                        <th>PM2.5 (24hr)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color: #03a30030;">
+                        <td scope="row">Good</td>
+                        <td>0–1.0</td>
+                        <td>0–40</td>
+                        <td>0–50</td>
+                        <td>0–40</td>
+                        <td>0–200</td>
+                        <td>0–50</td>
+                        <td>0–30</td>
+                    </tr>
+                    <tr style="background-color: #57a30030;">
+                        <td scope="row">Fair</td>
+                        <td>1.1–2.0</td>
+                        <td>41–80</td>
+                        <td>51–100 </td>
+                        <td>41–80</td>
+                        <td>201–400</td>
+                        <td>51–100</td>
+                        <td>31–60 </td>
+                    </tr>
+                    <tr style="background-color: #dbd80030;">
+                        <td>Moderate</td>
+                        <td>2.1–10</td>
+                        <td>81–380 </td>
+                        <td>101–168</td>
+                        <td>81–180</td>
+                        <td>401–800 </td>
+                        <td>101–250</td>
+                        <td>61–90 </td>
+                    </tr>
+                    <tr style="background-color: #fa750030;">
+                        <td>Poor</td>
+                        <td>10–17</td>
+                        <td>381–800</td>
+                        <td>169–208</td>
+                        <td>181–280</td>
+                        <td>801–1200</td>
+                        <td>251–350</td>
+                        <td>91–120</td>
+                    </tr>
+                    <tr style="background-color: #fa250030;">
+                        <td>Very poor </td>
+                        <td>17–34</td>
+                        <td>801–1600</td>
+                        <td>209–748 </td>
+                        <td>281–400</td>
+                        <td>1200–1800</td>
+                        <td>351–430</td>
+                        <td>121–250</td>
+                    </tr>
+                    <tr style="background-color: #630f0030;">
+                        <td>Severe</td>
+                        <td>34+</td>
+                        <td>1600+ </td>
+                        <td>748+</td>
+                        <td>400+</td>
+                        <td>1800+ </td>
+                        <td>430+</td>
+                        <td>250+</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        </main>
+
+        <div class="container">
+            <footer class="py-3 my-4">
+              <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link px-2 text-muted">About</a></li>
+              </ul>
+              <p class="text-center text-muted">&copy; 2021 Company, Inc</p>
+            </footer>
+        </div>
+
+
+
+<script src="script.js">
+    
+</script>
+</body>
+
+</html>

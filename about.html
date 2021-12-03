@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Air Pollution Monitor</title>
+</head>
+<body>
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom ">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+            <span class="fs-4">Air pollution monitor</span>
+          </a>
+    
+          <ul class="nav nav-pills">
+            <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          </ul>
+        </header>
+      </div>
+
+      <div class="container">
+          <table class="table table-hover">
+              <thead>
+                  <tr>
+                      <th>AQI </th>
+                      <th>Associated Health Impacts </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <th scope="row" style="color: #03a300;">Good</th>
+                      <td>Minimal impact </td>
+                  </tr>
+                  <tr>
+                      <th style="color: #57a300;">Fair</th>
+                      <td>May cause minor breathing discomfort to sensitive people. </td>
+                  </tr>
+                  <tr>
+                      <th style="color:#dbd800 ;">Moderate</th>
+                      <td>May cause breathing discomfort to people with lung disease such as asthma, and discomfort to people with heart disease, children and older adults. </td>
+                  </tr>
+                  <tr>
+                    <th style="color: #fa7500;">Poor</th>
+                    <td>May cause breathing discomfort to people on prolonged exposure, and discomfort to people with heart disease. </td>
+                </tr>
+                <tr>
+                    <th style="color: #fa2500;">Very poor</th>
+                    <td>May cause respiratory illness to the people on prolonged exposure. Effect may be more pronounced in people with lung and heart diseases. </td>
+                </tr>
+                <tr>
+                    <th style="color:#630f00 ;">Severe</th>
+                    <td>May cause respiratory impact even on healthy people, and serious health impacts on people with lung/heart disease. The health impacts may be experienced even during light physical activity. </td>
+                </tr>
+              </tbody>
+          </table>
+      </div>
+
+      <input type="date" value="2021-02-01">
+    
+</body>
+</html>

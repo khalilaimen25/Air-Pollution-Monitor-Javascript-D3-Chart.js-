@@ -38,7 +38,7 @@ $("#btn-current").on("click", function(){
 
     latlng = marker.getLatLng()
 
-    url_p = "http://api.openweathermap.org/data/2.5/air_pollution?lat="+latlng["lat"]+"&lon="+latlng["lng"]+"&appid=2ace548c596da63a31843e08fcdf659d"
+    url_p = "https://api.openweathermap.org/data/2.5/air_pollution?lat="+latlng["lat"]+"&lon="+latlng["lng"]+"&appid=2ace548c596da63a31843e08fcdf659d"
     d3.json(url_p, function(data){
         // console.log(data)
         $("#current-pollution-info").css("display", "block")
@@ -71,7 +71,7 @@ $("#btn-current").on("click", function(){
         location.href = "#c-result"
     })
 
-    url_w = "http://api.openweathermap.org/data/2.5/weather?lat="+latlng["lat"]+"&lon="+latlng["lng"]+"&units=metric&appid=2ace548c596da63a31843e08fcdf659d"
+    url_w = "https://api.openweathermap.org/data/2.5/weather?lat="+latlng["lat"]+"&lon="+latlng["lng"]+"&units=metric&appid=2ace548c596da63a31843e08fcdf659d"
     d3.json(url_w, function(data){
         // console.log(data)
         d3.select("#city").html(data["name"])
@@ -109,7 +109,7 @@ $("#btn-period").on("click", function(){
    
     latlng = marker.getLatLng()
    
-    url = "http://api.openweathermap.org/data/2.5/air_pollution/history?lat="+latlng["lat"]+"&lon="+latlng["lng"]+"&start="+start+"&end="+end+"&appid=2ace548c596da63a31843e08fcdf659d"
+    url = "https://api.openweathermap.org/data/2.5/air_pollution/history?lat="+latlng["lat"]+"&lon="+latlng["lng"]+"&start="+start+"&end="+end+"&appid=2ace548c596da63a31843e08fcdf659d"
     d3.json(url, function(data){
         // console.log(data["list"].length)
         tab = [];
